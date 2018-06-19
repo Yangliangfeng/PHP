@@ -12,6 +12,9 @@
 1. 单链表
 
 `
-单链表有一个引用指向后续节点
+单链表有一个引用指向后续结点。
 `
-![](https://github.com/Yangliangfeng/PHP/tree/master/Images/singleLink.jpg)
+![](https://github.com/Yangliangfeng/PHP/raw/master/Images/singleLink.jpg)
+
+
+
