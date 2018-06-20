@@ -108,4 +108,47 @@ public static function __callStatic($name,$argument){
 }
 }
 ```
+# 4.委托模式
+* 概念
+
+`
+通过分配或委托其他对象，委托设计模式能够去除核心对象中的判决和复杂的功能性
+`
+* 场景
+* 代码
+
+```
+class Mp3{
+    function Mp3Play($list,$song) {
+        return $list[$song];
+    }
+}
+class Mp4{
+	function Mp4Play($list,$song) {
+		return $list[$song];
+	}
+}
+class CdDelegator{
+
+	public $delegator = null;
+	public $list = [];
+
+	function addSong($song) {
+		$this->list[$song] = $song;
+	}
+	function __call($name,$argument) {
+		if($this->delegator != null) {
+
+			return call_user_func_array([$this->delegator,$name], $argument);
+		}
+
+		return false;
+	}
+}
+$cddelegator = new CdDelegator();
+$cddelegator->addSong('1');
+$cddelegator->addSong('2');
+$cddelegator->delegator = new Mp3();
+echo $cddelegator->Mp3Play($cddelegator->list,'1');
+```
 
