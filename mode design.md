@@ -256,6 +256,61 @@ echo $cddelegator->Mp3Play($cddelegator->list,'1');
  
  $busleader->step('审批通过');
 ```
+# 6.命令模式
+* 概念
+```
+将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或记录请求日志，可以提供命令的撤销和恢复功能
+```
+* 场景
+```
+数据插入数据库：
+1.保存数据库
+2.插入缓存
+3.生成静态页面
+```
+* 示例代码
+```
+class ICommand 
+{
+    public $isRemove = false;
+    abstract function exec($object);
+}
+class SaveToDB extends ICommand
+{
+    public function exec($object)
+    {
+        echo '插入数据库';
+    }
+}
+class SaveToMemcached extends ICommand
+{
+    public function exec($object)
+    {
+        echo '插入缓存';
+    }
+}
+class GenFile extends ICommand
+{
+    public function exec($object)
+    {
+        echo '生成文件';
+    }
+class Model
+{
+    public function commint(...$commands)
+    {
+        foreach($commands as $command)
+	{
+	    if(is_subclass_of($command,'ICommand')
+	    {
+	         $command->exec(null);
+	    }
+	}
+    }
+}
+$model = new Model();
+$model->commit(new SaveToDB(),new SaveToMemcached(),new GenFile());
+```
 
 
 
