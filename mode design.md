@@ -311,6 +311,71 @@ class Model
 $model = new Model();
 $model->commit(new SaveToDB(),new SaveToMemcached(),new GenFile());
 ```
+# 7.行为收集
+* 概念
+`
+行为收集、在需要的时候才进行触发执行。各个行为之间还能互相传递数据
+`
+* 思路
+```
+创建一个类叫做Action:
+1.有一个专门的方法来收集行为，仅仅是收集，但不执行
+2.设置一个commit方法来统一执行
+3.利用yeild生成器来获取每一步返回的值
+```
+* 示例代码
+```
+class Action 
+{
+    public $actions = [];
+    
+    public function then(callable $callable)//收集行为
+    {
+        $this->actions[] = $callable;
+    }
+    
+    public function commit()
+    {
+        foreach($this->actions as $action)
+	{
+	    $get_return = $action();
+	    yield $get_return;
+	}
+    }
+}
+class BaseController
+{
+    public $action;
+    public function __construct()
+    {
+        $this->action = new Action();
+    }
+}
+class NewController extends BaseController
+{   public $test="测试内容";
+    public function review()//演示
+    
+    {	//提交1、新闻评论数据 2、提交缓存数据 3、生成一些静态文件
+    	$self = $this;
+        $this->action->then(function() use($self){
+	     echo $self->test;
+	     //假设我在这完成数据库操作
+	     return "数据库操作完成";
+	})->then(function(){
+	     //假设我们完成了缓存操作 ，譬如插入memcached
+	     return "memcached ok";
+	})->then(function(){
+	    //静态文件的生成
+	    return "静态文件的生成";
+	});
+    }
+    
+    foreach($this->action->commit() as $item)
+    {
+        print_r($item);
+    }
+}
+```
 
 
 
