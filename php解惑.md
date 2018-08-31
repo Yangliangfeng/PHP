@@ -24,11 +24,12 @@ echo $func();
 ```
 ## 2. global与$GLOBALS的藕断丝连
 * 需要明白的概念
+1. global是在函数内部定义global变量
+2. GLOBALS是定义全局变量，只能用在当前脚本以及在当前脚本include和require所包含的文件
+
+* 验证下面概念的code
 1. global $a 是外部$a的`同名引用`
-
 2. $GLOBALS['a']是外部变量$a本身
-
-* 验证上面概念的code
 ```
 $a = 1;
 function test(){
