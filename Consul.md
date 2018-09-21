@@ -1,7 +1,8 @@
 官方网址:https://www.consul.io/docs/agent/basics.html
 ## 运行Consul
 ```
-consul agent -data-dir=/home/yang/consul -bind=192.168.1.200 -server -bootstrap -client 0.0.0.0 -ui -client=0.0.0.0
+consul agent -data-dir=/home/yang/consul -bind=192.168.1.200 -server -bootstrap -client 0.0.0.0 
+-ui -client=0.0.0.0
 * -server 代表以服务器的方式启动
 * -boostrap 指定自己为leader，而不需要选举
 * -ui 启动一个内置管理web界面
@@ -37,4 +38,5 @@ curl \
 1. kill -9    //9(SIGKILL);立即结束程序的运行. 本信号不能被阻塞、处理和忽略
 2. kill -2    //2(SIGINT);程序终止(interrupt)信号, 譬如Ctrl+C时发出 
 3. kill -15   //15(SIGTERM);可以被阻塞和处理。通常用来要求程序自己正常退出
+4. kill(默认是kill -15)
 ```
