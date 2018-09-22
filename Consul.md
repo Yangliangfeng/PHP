@@ -8,6 +8,10 @@ consul agent -data-dir=/home/yang/consul -bind=192.168.1.200 -server -bootstrap 
 * -ui 启动一个内置管理web界面
 * -client 指定客户端可以访问的IP。设置为0.0.0.0 则任意访问，否则默认本机可以访问。 
 ```
+## web管理页面
+```
+http://192.168.1.200:8500/ui
+```
 ## 注册
 * 新建json文件,文件内容如下：
 ```
