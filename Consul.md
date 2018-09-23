@@ -44,3 +44,7 @@ curl \
 3. kill -15   //15(SIGTERM);可以被阻塞和处理。通常用来要求程序自己正常退出
 4. kill(默认是kill -15)
 ```
+## Linux 开放防火墙端口
+```
+sudo iptables -I INPUT -p tcp -dport 139 -j ACCEPT
+```
