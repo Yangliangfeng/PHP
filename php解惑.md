@@ -1,4 +1,4 @@
-## 1.闭包若只如初见
+## 1. 闭包若只如初见
 * 定义
 `
 在函数内部使用外部函数定义的变量（特殊的匿名函数）
@@ -168,3 +168,33 @@ $e = memory_get_usage();
 
     preg是php中PCRE正则的函数名前缀 
 ```
+## 关于no-cache、max-age=0、must-revalidate区别
+* no-cache
+    
+    no-cache的响应实际是可以存储在本地缓存中的，只是在与原始服务器进行新鲜度再验证之前，缓存不能将其提供给客户端使用
+
+* must-revalidate
+    
+    含有must-revalidate的响应会被存储在本地缓存中，在后续请求时，该指令告知缓存：在事先没有与原始服务器进行再验证的情况下，不能提供这个对象的陈旧副本，但缓存仍然可以随意提供新鲜的副本
+    
+* max-age
+
+    max-age=xxx标识了该响应从服务器那边获取过来时，文档的处于新鲜状态的秒数，若max-age=0，则表示是一个立即过期的响应（直接标记为陈旧状态）
+    
+* no-cache和must-revalidate的区别
+    
+    假设一个文档的缓存时间设置为10s，若指定no-cache，则它会强制浏览器(User Agent)必须先进行新鲜度再验证（注：不管该缓存是否新鲜），待服务器那边确认新鲜（304）后，方可使用缓存。
+
+若指定must-revalidate，则浏览器会首先等待文档过期（超过10s），然后才去验证新鲜度（10s之前，都会直接使用缓存，不与服务器交互）
+
+* no-cache 与 must-revalidate, max-age=0区别
+
+    在执行must-revalidate时，若浏览器第二次去请求服务器来做新鲜度验证，结果服务器挂了，无法访问，那么缓存需要返回一个504 Gateway Timeout的错误（这里应该是像nginx这样的代理来返回，若是浏览器如chrome，将直接是ERR_CONNECTION_REFUSED，即无法访问，连接被拒绝）。
+
+而如果是no-cache，当验证新鲜度时，服务器扑街，则会照样使用本地缓存显示给用户（有的总比没的好，当然有可能显示的就是旧的文档了）。
+
+所以must-revalidate用在对事务要求比较严苛的情况下使用（比如支付）。
+```
+header("Cache-Control: no-cache, must-revalidate");
+```
+    
