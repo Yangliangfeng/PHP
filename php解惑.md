@@ -142,3 +142,20 @@ unset($test);
 $e = memory_get_usage();
 
 ```
+## PHP的几个概念
+```
+1. PECL
+    pecl的英文全称是The PHP Extension Community Library,是php的社区贡献扩展库，像memcache、rar等扩展都是通过这种方式来贡献的
+2. PEAR
+    PEAR的英文全称是：The Php Extension and Application Repository ，意思是php的应用扩展仓库，目前有很多扩展，你可以在http://
+pear.php.net/里找到。=
+    pear和pecl都是php的扩展，但他们是有区别的:
+    1) pecl是php的底层扩展，是通过c语言来写的。
+    2) pear是php的上层扩展，是通过php语言来写的，在项目中直接include就行了。像smarty与PHPUnit就是pear扩展
+3. PCRE
+    PCRE的全程是 Perl Compatible Regular Expressions，意思是兼容perl的正则表达式，此包由牛津大学的一名学生编写，凭借着其效率和
+易用性，为众多程序所青睐，php中有两种正则 （posix正则会被放弃），其中一种就是引用的pcre包。目前PCRE的最新版本是8.02。
+4. preg
+    preg是php中PCRE正则的函数名前缀
+    
+```
