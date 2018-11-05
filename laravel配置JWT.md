@@ -82,4 +82,61 @@ class User extends Authenticatable implements JWTSubject{
     }
 }
 ```
+### Laravel中使用Redis的订阅发布功能
+* php artisan make:console RedisSubscribe 你在Console/Commands/下就发现了RedisSubscribe.php
+
+* 在RedisSubscribe.php写入如下代码：
+```
+<?php
+namespace App\Console\Commands;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Redis;
+class RedisSubscribe extends Command
+{
+    /**
+     * 控制台命令名称
+     *
+     * @var string
+     */
+    protected $signature = 'redis:subscribe';
+    /**
+     * 控制台命令描述
+     *
+     * @var string
+     */
+    protected $description = 'Subscribe to a Redis channel';
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        Redis::subscribe(['test-channel'], function ($message) {
+        });
+
+    }
+}
+```
+* 在Kernal.php中添加配置代码
+![](https://github.com/Yangliangfeng/PHP/raw/master/Images/kernel.png)
+
+* 开启redis的订阅与发布功能：php artisan redis:subscribe
+
+* 测试：使用publish发布消息到该频道
+```
+Route::get('publish', function () {
+    // 路由逻辑...
+    Redis::publish('test-channel', json_encode(['foo' => 'bar']));
+});
+```
 
