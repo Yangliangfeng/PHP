@@ -376,9 +376,56 @@ class NewController extends BaseController
     }
 }
 ```
+# 8.适配器模式
+* 概念
+`
+在新有的接口或功能基础上，兼容或者扩展不同的新接口或者功能
+`
+* 主要角色
+```
+1.目标(Target)角色：定义客户端与特定领域的相关接口
+2.源(Adaptee)角色：需要进行适配的接口
+3.适配器(Adapter)角色：对Adaptee的接口与Target接口进行适配，适配器把源接口换成目标接口
+```
+* 示例代码
+```
+//目标角色
+interface Target {
+    public function simpleMethod1();
+    public function simpleMethod2();
+}
+//源角色
+class Adaptee {
+    public function simpleMethod1()
+    {
+        echo "Adapter simpleMethod1";
+    }
+}
+//类适配角色
+class Adapter implements Target {
+    private $adaptee;
+    
+    function __construct($adaptee) 
+    {
+        $this->adaptee = $adaptee;
+    }
+    
+    public function simpleMethod1()
+    {
+        $this->adaptee->simpleMethod1();
+    }
+    
+    public function simpleMethod2()
+    {
+        echo "Adapter simpleMethod2";
+    }
+}
 
-
-
+$adaptee = new Adaptee();
+$adapter = new Adapter($adaptee);
+$adapter->simpleMethod1();
+$adapter->simpleMethod2();
+```
 
 
 
