@@ -195,6 +195,7 @@ $e = memory_get_usage();
 
     所以must-revalidate用在对事务要求比较严苛的情况下使用（比如支付）。
 ```
-    header("Cache-Control: no-cache, must-revalidate");
+    header("Cache-Control: no-cache, must-revalidate"); //强制不缓存
+    header("Pragma: no-cache");  //禁止本页被缓存
 ```
     
