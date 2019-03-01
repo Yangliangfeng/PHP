@@ -7,6 +7,7 @@ Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款
 
 它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。PHP的正常执行流程如下
 ```
+
 ![](https://github.com/Yangliangfeng/PHP/raw/master/Images/php_opcode_1.png)
 
 ```
