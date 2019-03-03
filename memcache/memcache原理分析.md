@@ -19,7 +19,7 @@
     * 1.最大30天的数据过期时间,设置为永久的也会在这个时间过期
     * 2.最大键长为250字节，大于该长度无法存储，常量KEY_MAX_LENGTH 250控制
     * 3.单个item最大数据是1MB，超过1MB数据不予存储，常量POWER_BLOCK 1048576进行控制
-    * 4.最大同时连接数是200(与tomcat一致)，通过 conn_init()中的freetotal进行控制，最大软连接数是1024，通过settings.maxconns=1024
+    * 4.最大同时连接数是200(与tomcat一致)，通过conn_init()的freetotal进行控制，最大软连接数是1024，即settings.maxconns=1024
 ###   删除过期item
 
     Memcache为每个item设置过期时间，但不是到期就把item从内存删除，而是访问item时，如果到了有效期，才把item内存中删除。
