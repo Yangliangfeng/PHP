@@ -1,5 +1,26 @@
 #     Memcache原理分析篇
 
+###   Memcache工作原理
+
+    工作原理包括存和读两部分：
+    
+    存：Client端通过指定的server端的ip地址进行访问，需要缓存的对象或者数据以key-value的形式保存在server端。key通过hash，
+    
+    根据hash值吧value放到对应的server上。
+    
+    读：当需要获取对象数据时，先对key进行hash，通过获得的值可以确定他被保存在哪台server上，然后再向该server发出请求。
+    
+    也就是说Client端，只需要知道保存hash（key）的值在哪台服务器上就可以了
+    
+    Memcache通过在内存里维护一个统一的巨大的hash表
+    
+###   Memcache特性
+    
+    * 1.最大30天的数据过期时间,设置为永久的也会在这个时间过期
+    * 2.最大键长为250字节，大于该长度无法存储，常量KEY_MAX_LENGTH 250控制
+    * 3.单个item最大数据是1MB，超过1MB数据不予存储，常量POWER_BLOCK 1048576进行控制
+    * 4.最大同时连接数是200(与tomcat一致)，通过 conn_init()中的freetotal进行控制，最大软连接数是1024，通过 
+　　    settings.maxconns=1024 进行控制
 ###   删除过期item
 
     Memcache为每个item设置过期时间，但不是到期就把item从内存删除，而是访问item时，如果到了有效期，才把item内存中删除。
