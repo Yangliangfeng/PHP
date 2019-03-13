@@ -426,6 +426,87 @@ $adapter = new Adapter($adaptee);
 $adapter->simpleMethod1();
 $adapter->simpleMethod2();
 ```
+# 9.代理模式
+* 概念
+
+    **代理模式**为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户
+    
+ 端和目标对象之间起到中介的作。
+ 
+ ![](https://github.com/Yangliangfeng/PHP/raw/master/Images/proxy.png)
+ 
+ * 目标角色
+```
+1. 抽象主题角色（IGiveGift)
+     定义了Follower和Proxy公用接口，这样就在任何使用Follower的地方都可以使用Proxy
+2. 主题角色（Follower）
+     定义了Proxy所代表的真实实体
+3. 代理对象（Proxy）
+     保存一个引用使得代理可以访问实体，并提供一个与Follower接口相同的接口，这样代理可以用来代替实体(Follower)。
+```
+* 代码实现
+```
+interface IGiveGift
+{
+    function giveRose();
+    function giveChocolate();
+}
+
+class Follower implements IGiveGift
+{
+    private $girlName;
+ 
+    function __construct($name='Girl')
+    {
+        $this->girlName=$name;
+    }
+ 
+    function giveRose()
+    {
+        echo "{$this->girlName}:这是我送你的玫瑰，望你能喜欢。<br/>";
+    }
+ 
+    function giveChocolate()
+    {
+        echo "{$this->girlName}:这是我送你的巧克力，望你能收下。<br/>";
+    }
+}
+
+class Proxy implements IGiveGift
+{
+    private $follower;
+ 
+    function __construct($name='Girl')
+    {
+        $this->follower=new Follower($name);
+    }
+ 
+    function giveRose()
+    {
+        $this->follower->giveRose();
+    }
+ 
+    function giveChocolate()
+    {
+        $this->follower->giveChocolate();
+    }
+}
+
+客户端代码：
+
+$proxy=new Proxy('范冰冰');
+$proxy->giveRose();
+$proxy->giveChocolate();
+
+```
+* 优点
+```
+1. 真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰
+
+2. 代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了中介和保护了目标对象的作用
+
+3. 高扩展性
+```
 
 
 
