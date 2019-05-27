@@ -167,6 +167,9 @@ $e = memory_get_usage();
 4. preg
 
     preg是php中PCRE正则的函数名前缀 
+    
+5. PSR
+   具体见https://www.jianshu.com/p/b33155c15343博文
 ```
 ## 关于no-cache、max-age=0、must-revalidate区别
 * no-cache
