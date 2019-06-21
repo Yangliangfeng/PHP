@@ -72,3 +72,20 @@ notice: hard 必须大于等于soft的值
  吞吐量优先：启用Nagle算法， tcp_nodelay off
  低时延优先：禁用Nagle算法，tcp_nodelay on
 ```
+* Linux 的TCP 的Keep-Alive功能
+```
+1. 应用场景：
+   a. 检测实际断掉的连接
+   b. 用户维护与客户端间的防火墙有活跃的包
+   
+2. 参数设置
+   a. 发送心跳周期
+      net.ipv4.tcp_keepalive_time = 7200
+   b. 探测报发送间隔
+      net.ipv4.tcp_keepalive_intvl = 75
+   c. 探测包重试次数
+      net.ipv4.tcp_keepalive_probcs = 9
+ 3. Nginx的TCP的KeepAlive
+    so_keepalive = 30::10
+    keepidle  keepintvl   keepcnt
+```
