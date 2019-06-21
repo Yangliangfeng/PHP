@@ -52,4 +52,13 @@ notice: hard 必须大于等于soft的值
 ```
 1. net.ipv4.tcp_max_syn_backlog = 262144  //SYN队列未完成握手
 2. net.core.somaxconn     //ACCEPT队列已完成握手 ---> 系统级最大的backlog队列长度
+3. net.ipv4.tcp_retries1 = 3   //限制重传次数  ---> 达到上限后，更新路由缓存
+4. net.ipv4.tcp_retries2 = 15  // 达到上限后，关闭tcp连接
+```
+* TCP的缓冲区
+```
+1. net.ipv4.tcp_rmem = 4096 87380 6291456   //读缓存最小值，默认值，最大值；单位为字节，覆盖net.core.rmem_max
+2. net.ipv4.tcp_wmen = 4096 16384 4194304   //写缓存最小值，默认值，最大值；单位字节，覆盖net.core.wmen_max
+3. net.ipv4.tcp_mem = 1541646  2055528 3083292   //系统无内存压力，启动压力模式阈值，最大值；单位为页的数量
+4. net.ipv4.tcp_moderate_rcvbuf = 1    // 开启自动调整缓存模式
 ```
