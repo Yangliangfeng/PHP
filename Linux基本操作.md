@@ -62,3 +62,13 @@ notice: hard 必须大于等于soft的值
 3. net.ipv4.tcp_mem = 1541646  2055528 3083292   //系统无内存压力，启动压力模式阈值，最大值；单位为页的数量
 4. net.ipv4.tcp_moderate_rcvbuf = 1    // 开启自动调整缓存模式
 ```
+* TCP的Nagle算法
+```
+优点：
+   1. 避免一个连接上同时存在大量小报文
+   2. 最多只存在一个小报文
+   3. 合并多个小报文一起发送
+   4. 提高带宽的利用率
+ 吞吐量优先：启用Nagle算法， tcp_nodelay off
+ 低时延优先：禁用Nagle算法，tcp_nodelay on
+```
