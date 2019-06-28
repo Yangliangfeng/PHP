@@ -17,3 +17,5 @@
 5. 删除所有包含gitlab的文件及目录
    find / -name gitlab | xargs rm -rf 
 ```
+* 查看gitlab的版本号
+  cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
