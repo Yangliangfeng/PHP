@@ -29,3 +29,21 @@
 
 3. kill -9命令，系统发送的信号对应的是SIGKILL，即exit。exit信号不会被系统阻塞，所以，kill -9能顺利杀掉进程。
 ```
+* 更改gitlab默认的端口号
+```
+打开 /etc/gitlab/gitlab.rb配置文件
+
+external_url 'http://192.168.1.88'  改为： external_url 'http://192.168.1.88:8099'
+
+#unicorn['port'] = 8080   改为  unicorn['port'] = 128080    //监听端口
+```
+* 提交或者拉取代码无密码验证的配置
+```
+1.用户生成id_rsa.pub的公钥
+ssh-keygen
+
+2. 登录gitlab相应的项目下配置
+登录gitlab->切换到项目目录->设置->部署密钥->填写第一步生成的公钥
+
+3. 用户拉取代码，遇到提示，输入yes即可
+```
