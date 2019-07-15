@@ -169,6 +169,11 @@ $e = memory_get_usage();
     preg是php中PCRE正则的函数名前缀 
     
 5. PSR
+   1). PSR-0自动加载（该标准已经被废弃，使用PSR-4替代）
+   2). PSR-1基本代码规范 
+   3). PSR-2代码样式
+   4). PSR-3日志接口
+   5). PSR-4自动加载
    具体见https://www.jianshu.com/p/b33155c15343博文
 ```
 ## 关于no-cache、max-age=0、must-revalidate区别
