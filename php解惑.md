@@ -257,4 +257,12 @@ $e = memory_get_usage();
     
 只需要在编译php源码的时候带上 --enable-fpm 就可以了。
 ```
+## PHPStorm支持Swoole提示
+```
+1. 安装包
+https://github.com/wudi/swoole-ide-helper
+
+2. phpstorm配置
+选中“External Libraries” ------> 点击右键---------->Configure PHP Include Paths
+```
     
