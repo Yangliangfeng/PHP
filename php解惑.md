@@ -271,4 +271,14 @@ composer dump-autoload (-o)
 
 composer dumpautoload (-o)
 ```
+## array_merge 与 array+array 的区别
+```
+1. 当下标为数值时：array_merge()不会覆盖掉原来的值；array＋array合并数组则会把最先出现的值作为最终结果返回，
+
+而把后面的数组拥有相同键名的那些值“抛弃”掉（不是覆盖）。
+
+2. 当下标为字符时：array＋array仍然把最先出现的值作为最终结果返回；而把后面的数组拥有相同键名的那些值“抛弃”掉，
+
+但array_merge()此时会覆盖掉前面相同键名的值. 
+```
     
