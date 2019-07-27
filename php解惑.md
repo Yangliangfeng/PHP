@@ -281,8 +281,4 @@ composer dumpautoload (-o)
 
 但array_merge()此时会覆盖掉前面相同键名的值. 
 ```
-## SwoftCli框架启动的程序
-```
-swoftcli run -c http:start -b bin/swoft
-```
     
