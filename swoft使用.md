@@ -114,3 +114,7 @@ composer create-project  swoft/swoft  swoft "2.0.4"  --ignore-platform-reqs  //2
 2. 把下载下来新版本的vendor，bin，composer.json 以及lock 覆盖老版本的对应文件
 
 ```
+* swoft的composer升级
+```
+composer update
+```
