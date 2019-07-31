@@ -105,3 +105,12 @@ function invokeSetterMethod($name, ReflectionClass $obj_class, $data, &$instance
     
 }
 ```
+* swoft的暴力升级
+```
+1. 新建一个文件夹，创建一个新版本的项目
+
+composer create-project  swoft/swoft  swoft "2.0.4"  --ignore-platform-reqs  //2.0.4就是我们要升级的版本
+
+2. 把下载下来新版本的vendor，bin，composer.json 以及lock 覆盖老版本的对应文件
+
+```
