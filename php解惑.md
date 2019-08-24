@@ -281,4 +281,12 @@ composer dumpautoload (-o)
 
 但array_merge()此时会覆盖掉前面相同键名的值. 
 ```
+## 解析Linux中类似于crontab文件
+```
+1. 文档
+https://github.com/mtdowling/cron-expression
+
+2. 安装：
+composer require mtdowling/cron-expression   
+```
     
