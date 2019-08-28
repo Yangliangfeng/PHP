@@ -39,7 +39,7 @@ Composer 安装扩展包的时候，一般会发起两种请求：
 
 更新时间：1 分钟
 
-镜像地址：https://mirrors.aliyun.com/composer/
+镜像地址：composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 官方地址：https://mirrors.aliyun.com/composer/index....
 
