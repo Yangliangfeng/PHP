@@ -13,4 +13,7 @@
 ```
 1. 安装
   composer require nikic/fast-route
+  
+2. 文档地址
+   https://github.com/nikic/FastRoute
 ```
