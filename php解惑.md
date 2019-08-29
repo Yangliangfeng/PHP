@@ -284,4 +284,10 @@ https://github.com/mtdowling/cron-expression
 2. 安装：
 composer require mtdowling/cron-expression   
 ```
+### 关于接口安全该从那几个方面考虑
+```
+最基本的要完成SSL认证、token认证。先搞定这两个再说。 然后类似网关如限流、熔断，这个也要加。安全不光光是数据安全，
+
+还有恶意访问等
+```
     
