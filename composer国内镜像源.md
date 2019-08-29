@@ -73,5 +73,5 @@ Composer 安装扩展包的时候，一般会发起两种请求：
 ```
 ## Composer在生产环境要优化
 ```
-composer dump-atoload -o
+composer dump-autoload -o
 ```
