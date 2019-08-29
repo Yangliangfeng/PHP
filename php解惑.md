@@ -265,12 +265,7 @@ https://github.com/wudi/swoole-ide-helper
 2. phpstorm配置
 选中“External Libraries” ------> 点击右键---------->Configure PHP Include Paths
 ```
-## 为什么Composer在生产环境要使用dumpautoload
-```
-composer dump-autoload (-o)
 
-composer dumpautoload (-o)
-```
 ## array_merge 与 array+array 的区别
 ```
 1. 当下标为数值时：array_merge()不会覆盖掉原来的值；array＋array合并数组则会把最先出现的值作为最终结果返回，
