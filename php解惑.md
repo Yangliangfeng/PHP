@@ -291,4 +291,11 @@ composer require mtdowling/cron-expression
 还有恶意访问等
 ```
 * Sharing-JDBC
+
+### 字符串数组转化成真正的数组
+```
+$str="array ( 'tupian' => array ( 'tupian' => '/pub/upfiles/image/201804/20180419111658_68798.jpg', 'miaoshu' => '', 'lianjie' => 'http://', ),"
+
+print_r(eval("return $str;"));die;
+```
     
