@@ -17,3 +17,11 @@
 2. 文档地址
    https://github.com/nikic/FastRoute
 ```
+* php第三方php-di（依赖注入）
+```
+1. 文档地址
+  http://php-di.org/doc/getting-started.html
+
+2. 安装
+  composer require php-di/php-di
+```
