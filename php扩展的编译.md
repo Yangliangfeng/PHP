@@ -25,3 +25,11 @@
 2. 安装
   composer require php-di/php-di
 ```
+* php注解第三方库
+```
+1. 文档地址
+  https://github.com/doctrine/annotations
+
+2. 安装
+  composer require doctrine/annotations
+```
