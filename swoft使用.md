@@ -118,3 +118,13 @@ composer create-project  swoft/swoft  swoft "2.0.4"  --ignore-platform-reqs  //2
 ```
 composer update
 ```
+3. docker以http运行swoft
+```
+docker run -d --name swoft -p 18306:18306 -v /home/yang/swoft:/swoft -w /swoft swoft:4.4.1
+
+```
+4. docker以rpc运行swoft
+```
+docker run -d --name swoftrpc -p 8006:18306 -p 8007:18307 -p 8008:18308 
+-v /home/yang/swoftRpc:/swoft -w /swoft swoft:4.4.1
+```
