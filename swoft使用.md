@@ -6,6 +6,8 @@
 
 swoftcli run -c http:start -b bin/swoft
 
+swoftcli run -c rpc:start -b bin/swoft
+
 ```
 
 ### 实例之JSON参数自动转实体对象
