@@ -10,6 +10,9 @@ swoftcli run -c rpc:start -b bin/swoft
 
 swoftcli run -c ws:start -b bin/swoft
 
+2. 生成数据库表的实体
+php bin/swoft entity:create --table=course_kinds,course_main,course_metas --path=@app/Models
+
 ```
 
 ### 实例之JSON参数自动转实体对象
