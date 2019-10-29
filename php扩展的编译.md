@@ -33,3 +33,11 @@
 2. 安装
   composer require doctrine/annotations
 ```
+* JWT之token验证
+```
+1. 文档地址
+  https://github.com/firebase/php-jwt
+  
+2. 安装
+  composer require firebase/php-jwt --ignore-platform-reqs
+```
