@@ -347,4 +347,18 @@ function getClientIP(){
 2. 并发量大的
     雪花算法 生成分布式的唯一ID 
 ```
+### 分页的算法
+```
+function getDataByPage(page, pagesize, bookData) {
+    let result = [];
+    let start = (page - 1) * pagesize;//起始页码
+    let end = page * pagesize >= bookData[key].length ? bookData[key].length : page * pagesize;
+    for(let i = start ; i < end; i++) {
+        result.push(bookData)
+    }
+  
+    return  result;
+}
+```
+
     
