@@ -15,4 +15,11 @@
     
  4. 插件 -2
     npm i --save-dev html-webpack-plugin
+    
+ 5. 插件 -3
+    1）github.com地址
+      https://github.com/webpack/webpack-dev-server
+      
+    2）配置地址
+      https://webpack.docschina.org/configuration/dev-server
 ```
