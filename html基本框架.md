@@ -30,3 +30,23 @@
     2）安装：
     npm i clean-webpack-plugin --save-dev
 ```
+### 付费阅读项目的前端环境
+```
+1. vue脚手架的安装
+   npm install -g @vue/cli
+
+2. 创建项目
+   vue create myreader
+   
+3. 前端ant-design框架：https://vue.ant.design/
+   npm install ant-design-vue --save
+
+4. 其他组件
+   npm install axios --save
+   
+   npm install mockjs --save-dev
+   
+   npm install vuex --save
+   
+   npm install vue-router --save
+```
